@@ -1,17 +1,17 @@
 import 'package:flutter/material.dart';
 import 'package:quiz_multiple_choice/constants.dart';
 import 'package:quiz_multiple_choice/pages/home.dart';
-import 'package:quiz_multiple_choice/pages/multi_page.dart';
+import 'package:quiz_multiple_choice/pages/multiple_choice_page.dart';
 import 'package:quiz_multiple_choice/widgets/outline_button.dart';
 
-class LevelDescriptionPage extends StatefulWidget {
-  const LevelDescriptionPage({super.key});
+class LevelTwoDescription extends StatefulWidget {
+  const LevelTwoDescription({super.key});
 
   @override
-  State<LevelDescriptionPage> createState() => _LevelDescriptionPageState();
+  State<LevelTwoDescription> createState() => _LevelTwoDescriptionState();
 }
 
-class _LevelDescriptionPageState extends State<LevelDescriptionPage> {
+class _LevelTwoDescriptionState extends State<LevelTwoDescription> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -64,7 +64,7 @@ class _LevelDescriptionPageState extends State<LevelDescriptionPage> {
                 ),
               ),
               const Text(
-                "Level 2 ",
+                "Level 2",
                 style: TextStyle(
                   fontFamily: "Sf-Pro-Text",
                   fontSize: 14,
@@ -75,7 +75,7 @@ class _LevelDescriptionPageState extends State<LevelDescriptionPage> {
                 height: 8,
               ),
               const Text(
-                "Continuing",
+                "Multiple Choice",
                 style: TextStyle(
                   fontFamily: "Sf-Pro-Text",
                   fontWeight: FontWeight.bold,
@@ -83,8 +83,11 @@ class _LevelDescriptionPageState extends State<LevelDescriptionPage> {
                   color: Colors.white,
                 ),
               ),
+              const SizedBox(
+                height: 8,
+              ),
               const Text(
-                "Do you feel confident? Here you'll chagglenge one of our most difficult travel questions! ",
+                "In this quiz, you will be presented with 3 multiple choice questions. Test your knowledge and respond quickly to see how many questions you can answer correctly! ",
                 style: TextStyle(
                   fontFamily: "Sf-Pro-Text",
                   fontSize: 14,
@@ -105,7 +108,7 @@ class _LevelDescriptionPageState extends State<LevelDescriptionPage> {
                       context,
                       MaterialPageRoute(
                         builder: (context) {
-                          return const MultiPage();
+                          return const MultipleChoicePage();
                         },
                       ),
                     );
@@ -116,7 +119,7 @@ class _LevelDescriptionPageState extends State<LevelDescriptionPage> {
                   child: const Expanded(
                     child: Center(
                       child: Text(
-                        "Game",
+                        "Let's Start",
                         style: TextStyle(
                           fontFamily: "Sf-Pro-Text",
                           fontWeight: FontWeight.bold,

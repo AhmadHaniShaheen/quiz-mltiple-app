@@ -1,19 +1,19 @@
 import 'package:flutter/material.dart';
 import 'package:quiz_multiple_choice/constants.dart';
 import 'package:quiz_multiple_choice/pages/home.dart';
-import 'package:quiz_multiple_choice/quiz_brain.dart';
+import 'package:quiz_multiple_choice/models/multiple_choice/quiz_brain.dart';
 import 'package:quiz_multiple_choice/widgets/outline_button.dart';
 
-class MultiPage extends StatefulWidget {
-  const MultiPage({
+class MultipleChoicePage extends StatefulWidget {
+  const MultipleChoicePage({
     super.key,
   });
   @override
-  State<MultiPage> createState() => _MultiPageState();
+  State<MultipleChoicePage> createState() => _MultipleChoicePageState();
 }
 
-class _MultiPageState extends State<MultiPage> {
-  QuizBrain quizBrain = QuizBrain();
+class _MultipleChoicePageState extends State<MultipleChoicePage> {
+  QuizBrainMulti quizBrain = QuizBrainMulti();
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -63,11 +63,11 @@ class _MultiPageState extends State<MultiPage> {
                           shape: BoxShape.circle,
                         ),
                       ),
-                      const SizedBox(
+                      SizedBox(
                         width: 56,
                         height: 56,
                         child: CircularProgressIndicator(
-                          value: 0.5,
+                          value: (quizBrain.questionNumber + 1) / 3,
                           color: Colors.white,
                         ),
                       ),
@@ -83,7 +83,7 @@ class _MultiPageState extends State<MultiPage> {
                         ),
                         child: Center(
                           child: Text(
-                            "0${quizBrain.questionNumber}",
+                            "0${quizBrain.questionNumber + 1}",
                             style: const TextStyle(
                               color: Colors.white,
                               fontSize: 16,
@@ -138,7 +138,7 @@ class _MultiPageState extends State<MultiPage> {
                 height: 24,
               ),
               Text(
-                "question ${quizBrain.questionNumber} of ${quizBrain.getQuestionBankCount()}",
+                "question ${quizBrain.questionNumber + 1} of ${quizBrain.getQuestionBankCount()}",
                 style: const TextStyle(
                   fontFamily: "Sf-Pro-Text",
                   fontSize: 14,

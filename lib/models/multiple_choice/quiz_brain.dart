@@ -1,6 +1,6 @@
-import 'package:quiz_multiple_choice/models/question_model.dart';
+import 'package:quiz_multiple_choice/models/multiple_choice/question_model.dart';
 
-class QuizBrain {
+class QuizBrainMulti {
   int questionNumber = 0;
   int favorit = 0;
 

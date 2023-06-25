@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:quiz_multiple_choice/constants.dart';
-import 'package:quiz_multiple_choice/pages/level_description_page.dart';
+import 'package:quiz_multiple_choice/pages/level_one_description.dart';
+import 'package:quiz_multiple_choice/pages/level_two_description.dart';
 import 'package:quiz_multiple_choice/widgets/my_level_widget.dart';
 import 'package:quiz_multiple_choice/widgets/outline_button.dart';
 
@@ -16,7 +17,7 @@ class _HomePageState extends State<HomePage> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        backgroundColor: Colors.white,
+        backgroundColor: Colors.transparent,
         elevation: 0,
         actions: [
           OutlineButton(
@@ -62,7 +63,7 @@ class _HomePageState extends State<HomePage> {
                     context,
                     MaterialPageRoute(
                       builder: (context) {
-                        return const LevelDescriptionPage();
+                        return const LevelOneDescription();
                       },
                     ),
                   );
@@ -82,7 +83,7 @@ class _HomePageState extends State<HomePage> {
                     context,
                     MaterialPageRoute(
                       builder: (context) {
-                        return const LevelDescriptionPage();
+                        return const LevelTwoDescription();
                       },
                     ),
                   );
