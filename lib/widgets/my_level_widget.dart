@@ -8,7 +8,7 @@ class MyLevelWidget extends StatelessWidget {
   final String title;
   final String levelNumber;
   final List<Color> colors;
-  final Function() function;
+  final String route;
   const MyLevelWidget({
     super.key,
     required this.image,
@@ -16,13 +16,15 @@ class MyLevelWidget extends StatelessWidget {
     required this.title,
     required this.levelNumber,
     required this.colors,
-    required this.function,
+    required this.route,
   });
 
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
-      onTap: function,
+      onTap: () {
+        Navigator.pushNamed(context, route);
+      },
       child: Stack(
         alignment: Alignment.topRight,
         children: [
@@ -47,7 +49,9 @@ class MyLevelWidget extends StatelessWidget {
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 OutlineButton(
-                  function: () {},
+                  function: () {
+                    Navigator.pushNamed(context, route);
+                  },
                   icon: iconName,
                   iconColor: Colors.white,
                   borderColor: Colors.white,

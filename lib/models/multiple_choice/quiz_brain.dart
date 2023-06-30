@@ -7,7 +7,7 @@ class QuizBrainMulti {
   final List<QuestionModel> questionBank = [
     QuestionModel(
       questionText: "Whats your Name",
-      questionAnswer: 2,
+      questionAnswer: 0,
       questionOption: ["Ahmad", "Rami", "Hassan"],
     ),
     QuestionModel(
@@ -17,7 +17,7 @@ class QuizBrainMulti {
     ),
     QuestionModel(
       questionText: "How much many do you spend in day",
-      questionAnswer: 3,
+      questionAnswer: 1,
       questionOption: ["10", "20", "30"],
     ),
   ];
@@ -38,9 +38,21 @@ class QuizBrainMulti {
     return questionBank[questionNumber].questionOption;
   }
 
+  bool isFinshed() {
+    if (questionNumber < questionBank.length - 1) {
+      return true;
+    } else {
+      return false;
+    }
+  }
+
   void nextQuestion() {
     if (questionNumber < questionBank.length - 1) {
       questionNumber++;
     }
+  }
+
+  reset() {
+    questionNumber = 0;
   }
 }

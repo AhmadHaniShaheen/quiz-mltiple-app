@@ -2,17 +2,13 @@ import 'package:flutter/material.dart';
 import 'package:quiz_multiple_choice/constants.dart';
 import 'package:quiz_multiple_choice/pages/home.dart';
 
-import 'package:quiz_multiple_choice/pages/true_false_q.dart';
 import 'package:quiz_multiple_choice/widgets/outline_button.dart';
 
-class LevelOneDescription extends StatefulWidget {
-  const LevelOneDescription({super.key});
+class LevelOneDescription extends StatelessWidget {
+  const LevelOneDescription({
+    super.key,
+  });
 
-  @override
-  State<LevelOneDescription> createState() => _LevelOneDescriptionState();
-}
-
-class _LevelOneDescriptionState extends State<LevelOneDescription> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -22,8 +18,8 @@ class _LevelOneDescriptionState extends State<LevelOneDescription> {
           decoration: const BoxDecoration(
             gradient: LinearGradient(
               colors: [
-                l22,
-                l2,
+                kL1,
+                kL12,
               ],
               begin: Alignment.topCenter,
               end: Alignment.bottomCenter,
@@ -105,14 +101,7 @@ class _LevelOneDescriptionState extends State<LevelOneDescription> {
                 margin: const EdgeInsets.all(4),
                 child: ElevatedButton(
                   onPressed: () {
-                    Navigator.push(
-                      context,
-                      MaterialPageRoute(
-                        builder: (context) {
-                          return const TrueFalseQ();
-                        },
-                      ),
-                    );
+                    Navigator.pushNamed(context, '/true_false_q');
                   },
                   style: ElevatedButton.styleFrom(
                       backgroundColor: Colors.white,
@@ -122,10 +111,10 @@ class _LevelOneDescriptionState extends State<LevelOneDescription> {
                       child: Text(
                         "Let's Start",
                         style: TextStyle(
-                          fontFamily: "Sf-Pro-Text",
-                          fontWeight: FontWeight.bold,
+                          fontFamily: kFontFamily,
                           fontSize: 18,
-                          color: blueBg,
+                          color: kL1,
+                          fontWeight: FontWeight.bold,
                         ),
                       ),
                     ),

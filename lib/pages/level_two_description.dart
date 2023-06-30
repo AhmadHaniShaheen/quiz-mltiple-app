@@ -1,17 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:quiz_multiple_choice/constants.dart';
-import 'package:quiz_multiple_choice/pages/home.dart';
-import 'package:quiz_multiple_choice/pages/multiple_choice_page.dart';
 import 'package:quiz_multiple_choice/widgets/outline_button.dart';
 
-class LevelTwoDescription extends StatefulWidget {
-  const LevelTwoDescription({super.key});
+class LevelTwoDescription extends StatelessWidget {
+  const LevelTwoDescription({
+    super.key,
+  });
 
-  @override
-  State<LevelTwoDescription> createState() => _LevelTwoDescriptionState();
-}
-
-class _LevelTwoDescriptionState extends State<LevelTwoDescription> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -21,8 +16,8 @@ class _LevelTwoDescriptionState extends State<LevelTwoDescription> {
           decoration: const BoxDecoration(
             gradient: LinearGradient(
               colors: [
-                l22,
-                l2,
+                kL2,
+                kL22,
               ],
               begin: Alignment.topCenter,
               end: Alignment.bottomCenter,
@@ -36,14 +31,7 @@ class _LevelTwoDescriptionState extends State<LevelTwoDescription> {
                   SizedBox(
                     child: OutlineButton(
                       function: () {
-                        Navigator.push(
-                          context,
-                          MaterialPageRoute(
-                            builder: (context) {
-                              return const HomePage();
-                            },
-                          ),
-                        );
+                        Navigator.pushNamed(context, '/');
                       },
                       icon: Icons.close,
                       iconColor: Colors.white,
@@ -103,33 +91,21 @@ class _LevelTwoDescriptionState extends State<LevelTwoDescription> {
               Container(
                 margin: const EdgeInsets.all(4),
                 child: ElevatedButton(
-                  onPressed: () {
-                    Navigator.push(
-                      context,
-                      MaterialPageRoute(
-                        builder: (context) {
-                          return const MultipleChoicePage();
-                        },
+                    onPressed: () {
+                      Navigator.pushNamed(context, '/multiple_choice_page');
+                    },
+                    style: ElevatedButton.styleFrom(
+                        backgroundColor: Colors.white,
+                        minimumSize: const Size(double.infinity, 56)),
+                    child: const Text(
+                      "Let's Start",
+                      style: TextStyle(
+                        fontFamily: kFontFamily,
+                        fontWeight: FontWeight.bold,
+                        fontSize: 18,
+                        color: blueBg,
                       ),
-                    );
-                  },
-                  style: ElevatedButton.styleFrom(
-                      backgroundColor: Colors.white,
-                      minimumSize: const Size(double.infinity, 56)),
-                  child: const Expanded(
-                    child: Center(
-                      child: Text(
-                        "Let's Start",
-                        style: TextStyle(
-                          fontFamily: "Sf-Pro-Text",
-                          fontWeight: FontWeight.bold,
-                          fontSize: 18,
-                          color: blueBg,
-                        ),
-                      ),
-                    ),
-                  ),
-                ),
+                    )),
               ),
               const Spacer(),
             ],

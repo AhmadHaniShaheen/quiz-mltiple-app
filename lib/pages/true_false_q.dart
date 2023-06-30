@@ -28,8 +28,8 @@ class _TrueFalseQState extends State<TrueFalseQ> {
           decoration: const BoxDecoration(
             gradient: LinearGradient(
               colors: [
-                l22,
-                l2,
+                kL1,
+                kL12,
               ],
               begin: Alignment.topCenter,
               end: Alignment.bottomCenter,
@@ -153,7 +153,18 @@ class _TrueFalseQState extends State<TrueFalseQ> {
                   onPressed: () {
                     checkAnswer(true);
                   },
-                  child: const Text("true"),
+                  style: ElevatedButton.styleFrom(
+                      backgroundColor: Colors.white,
+                      minimumSize: const Size(double.infinity, 56)),
+                  child: const Text(
+                    "True",
+                    style: TextStyle(
+                      fontFamily: kFontFamily,
+                      fontSize: 18,
+                      color: kL1,
+                      fontWeight: FontWeight.bold,
+                    ),
+                  ),
                 ),
               ),
               const SizedBox(
@@ -164,8 +175,18 @@ class _TrueFalseQState extends State<TrueFalseQ> {
                   onPressed: () {
                     checkAnswer(false);
                   },
-                  style: const ButtonStyle(),
-                  child: const Text("False"),
+                  style: ElevatedButton.styleFrom(
+                      backgroundColor: Colors.white,
+                      minimumSize: const Size(double.infinity, 56)),
+                  child: const Text(
+                    "False",
+                    style: TextStyle(
+                      fontFamily: kFontFamily,
+                      fontSize: 18,
+                      color: kL1,
+                      fontWeight: FontWeight.bold,
+                    ),
+                  ),
                 ),
               ),
               Wrap(

@@ -1,8 +1,11 @@
+import 'dart:async';
+
 import 'package:flutter/material.dart';
 import 'package:quiz_multiple_choice/constants.dart';
 import 'package:quiz_multiple_choice/pages/home.dart';
 import 'package:quiz_multiple_choice/models/multiple_choice/quiz_brain.dart';
 import 'package:quiz_multiple_choice/widgets/outline_button.dart';
+import 'package:rflutter_alert/rflutter_alert.dart';
 
 class MultipleChoicePage extends StatefulWidget {
   const MultipleChoicePage({
@@ -13,6 +16,8 @@ class MultipleChoicePage extends StatefulWidget {
 }
 
 class _MultipleChoicePageState extends State<MultipleChoicePage> {
+  List<Icon> scorKeeper = [];
+
   QuizBrainMulti quizBrain = QuizBrainMulti();
   @override
   Widget build(BuildContext context) {
@@ -165,7 +170,7 @@ class _MultipleChoicePageState extends State<MultipleChoicePage> {
                 child: ElevatedButton(
                   onPressed: () {
                     setState(() {
-                      quizBrain.nextQuestion();
+                      checkAnswer(0);
                     });
                   },
                   style: ElevatedButton.styleFrom(
@@ -200,7 +205,7 @@ class _MultipleChoicePageState extends State<MultipleChoicePage> {
                 child: ElevatedButton(
                   onPressed: () {
                     setState(() {
-                      quizBrain.nextQuestion();
+                      checkAnswer(1);
                     });
                   },
                   style: ElevatedButton.styleFrom(
@@ -235,7 +240,7 @@ class _MultipleChoicePageState extends State<MultipleChoicePage> {
                 child: ElevatedButton(
                   onPressed: () {
                     setState(() {
-                      quizBrain.nextQuestion();
+                      checkAnswer(2);
                     });
                   },
                   style: ElevatedButton.styleFrom(
@@ -265,6 +270,9 @@ class _MultipleChoicePageState extends State<MultipleChoicePage> {
                   ),
                 ),
               ),
+              Wrap(
+                children: scorKeeper,
+              ),
               const SizedBox(
                 height: 24,
               ),
@@ -273,5 +281,37 @@ class _MultipleChoicePageState extends State<MultipleChoicePage> {
         ),
       ),
     );
+  }
+
+  checkAnswer(int userChoice) {
+    int correctAnswer = quizBrain.getQuestionAnswer();
+    if (userChoice == correctAnswer) {
+      setState(() {
+        scorKeeper.add(const Icon(
+          Icons.check,
+          color: Colors.green,
+        ));
+      });
+    } else {
+      setState(() {
+        scorKeeper.add(const Icon(
+          Icons.close,
+          color: Colors.red,
+        ));
+      });
+    }
+    if (quizBrain.isFinshed()) {
+      setState(() {
+        quizBrain.nextQuestion();
+      });
+    } else {
+      Timer(const Duration(seconds: 1), () {
+        Alert(context: context, title: "Finished", desc: "you are done").show();
+        setState(() {
+          quizBrain.reset();
+          scorKeeper.clear();
+        });
+      });
+    }
   }
 }

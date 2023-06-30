@@ -1,7 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:quiz_multiple_choice/constants.dart';
-import 'package:quiz_multiple_choice/pages/level_one_description.dart';
-import 'package:quiz_multiple_choice/pages/level_two_description.dart';
 import 'package:quiz_multiple_choice/widgets/my_level_widget.dart';
 import 'package:quiz_multiple_choice/widgets/outline_button.dart';
 
@@ -13,6 +11,30 @@ class HomePage extends StatefulWidget {
 }
 
 class _HomePageState extends State<HomePage> {
+  List<Widget> levels = [
+    const MyLevelWidget(
+      title: "True or False",
+      levelNumber: "Level 1",
+      image: "assets/images/bags.png",
+      iconName: Icons.check,
+      route: '/level_one_description',
+      colors: [
+        kL1,
+        kL12,
+      ],
+    ),
+    const MyLevelWidget(
+      route: '/level_two_description',
+      image: "assets/images/ballon-s.png",
+      iconName: Icons.play_arrow,
+      title: "Multiple Choice",
+      levelNumber: "Level 2",
+      colors: [
+        kL2,
+        kL22,
+      ],
+    ),
+  ];
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -35,7 +57,7 @@ class _HomePageState extends State<HomePage> {
         ],
       ),
       body: Padding(
-        padding: const EdgeInsets.all(16.0),
+        padding: const EdgeInsets.only(top: 32.0, left: 16.0, right: 16.0),
         child: SingleChildScrollView(
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
@@ -57,45 +79,18 @@ class _HomePageState extends State<HomePage> {
                   color: greyFont,
                 ),
               ),
-              MyLevelWidget(
-                function: () {
-                  Navigator.push(
-                    context,
-                    MaterialPageRoute(
-                      builder: (context) {
-                        return const LevelOneDescription();
-                      },
-                    ),
-                  );
-                },
-                image: "assets/images/bags.png",
-                iconName: Icons.check,
-                title: "True or False",
-                levelNumber: "Level 1",
-                colors: const [
-                  kL1,
-                  kL12,
-                ],
+              const SizedBox(
+                height: 24,
               ),
-              MyLevelWidget(
-                function: () {
-                  Navigator.push(
-                    context,
-                    MaterialPageRoute(
-                      builder: (context) {
-                        return const LevelTwoDescription();
-                      },
-                    ),
-                  );
+              ListView.builder(
+                shrinkWrap: true,
+                physics: const NeverScrollableScrollPhysics(),
+                addAutomaticKeepAlives: false,
+                cacheExtent: 100,
+                itemCount: levels.length,
+                itemBuilder: (context, index) {
+                  return levels[index];
                 },
-                image: "assets/images/ballon-s.png",
-                iconName: Icons.play_arrow,
-                title: "Multiple Choice",
-                levelNumber: "Level 2",
-                colors: const [
-                  kL2,
-                  kL22,
-                ],
               ),
             ],
           ),
